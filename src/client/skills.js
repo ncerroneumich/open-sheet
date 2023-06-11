@@ -1,55 +1,55 @@
 export default function Skills() {
   return (
-    <div class="skill-box">
-        <div class="skill" id="acrobatics">
+    <div className="skill-box">
+        <div className="skill" id="acrobatics">
             Acrobatics dex [mod]
         </div>
-        <div class="skill" id="animal-handling">
+        <div className="skill" id="animal-handling">
             Animal Handling wis [mod]
         </div>
-        <div class="skill" id="arcana">
+        <div className="skill" id="arcana">
             Arcana int [mod]
         </div>
-        <div class="skill" id="athletics">
+        <div className="skill" id="athletics">
             Athletics str [mod]
         </div>
-        <div class="skill" id="deception">
+        <div className="skill" id="deception">
             Deception cha [mod]
         </div>
-        <div class="skill" id="history">
+        <div className="skill" id="history">
             History int [mod]
         </div>
-        <div class="skill" id="insight">
+        <div className="skill" id="insight">
             Insight wis [mod]
         </div>
-        <div class="skill" id="intimidation">
+        <div className="skill" id="intimidation">
             Intimidation cha [mod]
         </div>
-        <div class="skill" id="investigation">
+        <div className="skill" id="investigation">
             Investigation int [mod]
         </div>
-        <div class="skill" id="medicine">
+        <div className="skill" id="medicine">
             Medicine wis [mod]
         </div>
-        <div class="skill" id="nature">
+        <div className="skill" id="nature">
             Nature int [mod]
         </div>
-        <div class="skill" id="perception">
+        <div className="skill" id="perception">
             Perception wis [mod]
         </div>
-        <div class="skill" id="persuasion">
+        <div className="skill" id="persuasion">
             Persausion cha [mod]
         </div>
-        <div class="skill" id="religion">
+        <div className="skill" id="religion">
             Religion int [mod]
         </div>
-        <div class="skill" id="sleight-of-hand">
+        <div className="skill" id="sleight-of-hand">
             Sleight of Hand dex [mod]
         </div>
-        <div class="skill" id="stealth">
+        <div className="skill" id="stealth">
             Stealth dex [mod]
         </div>
-        <div class="skill" id="survival">
+        <div className="skill" id="survival">
             Survival wis [mod]
         </div>
     </div>

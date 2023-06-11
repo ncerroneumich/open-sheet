@@ -1,25 +1,25 @@
 export default function SavingThrows() {
   return (
-    <div class="saving-throw-box">
-        <div class="st-row">
-            <div class="st-box" id="st-str">
+    <div className="saving-throw-box">
+        <div className="st-row">
+            <div className="st-box" id="st-str">
                 STR +[mod]
             </div>
-            <div class="st-box" id="st-dex">
+            <div className="st-box" id="st-dex">
                 DEX +[mod]
             </div>
-            <div class="st-box" id="st-con">
+            <div className="st-box" id="st-con">
                 CON +[mod]
             </div>
         </div>
-        <div class="st-row">
-            <div class="st-box" id="st-int">
+        <div className="st-row">
+            <div className="st-box" id="st-int">
                 INT +[mod]
             </div>
-            <div class="st-box" id="st-wis">
+            <div className="st-box" id="st-wis">
                 WIS +[mod]
             </div>
-            <div class="st-box" id="st-cha">
+            <div className="st-box" id="st-cha">
                 CHA +[mod]
             </div>
         </div>

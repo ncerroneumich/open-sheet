@@ -1,0 +1,54 @@
+/* Character sheet header */
+
+.sheet-header {
+    width: 1200px;
+    outline: 3px black solid;
+}
+
+.character-sheet-portrait {
+    height: 250px;
+    margin: 10px
+}
+
+.character-sheet-header-group {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    width: 600px;
+    height: 250px;
+    margin: 10px;
+    outline: 2px black solid;
+}
+
+.character-sheet-header-details {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.character-sheet-header-level-details {
+    display: inline-block;
+    vertical-align: top;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.character-sheet-header-ability-scores {
+    position: absolute;
+    bottom: 0px;
+}
+
+.as-box {
+    display: inline-block;
+    height: 110px;
+    width: 80px;
+    margin: 10px;
+    outline: 1px black solid;
+}
+
+.character-sheet-header-stack {
+    display: inline-block;
+    vertical-align: top;
+}
