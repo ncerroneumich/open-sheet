@@ -2,6 +2,7 @@
 
 .sheet-header {
     width: 1200px;
+    height: 280px;
     outline: 3px black solid;
 }
 
@@ -49,6 +50,21 @@
 }
 
 .character-sheet-header-stack {
+    display: inline-block;
+    vertical-align: top;
+    height: 250px;
+    margin: 10px;
+}
+
+.vertical-box {
+    vertical-align: top;
+    height: 31.5%;
+    width: 100px;
+    outline: 2px black solid;
+    margin: 5px;
+}
+
+.character-sheet-header-hp {
     display: inline-block;
     vertical-align: top;
 }

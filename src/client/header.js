@@ -49,13 +49,13 @@ export default function Header() {
                 </div>
             </div>
             <div className="character-sheet-header-stack">
-                <div className="armor-class">
+                <div className="vertical-box" id="armor-class">
                     [ac]
                 </div>
-                <div className="speed">
+                <div className="vertical-box" id="speed">
                     [speed]
                 </div>
-                <div className="initiative">
+                <div className="vertical-box" id="initiative">
                     [ini]
                 </div>
             </div>
