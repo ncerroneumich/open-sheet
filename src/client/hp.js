@@ -1,8 +1,6 @@
 "use client";
 
 export default function HP({max_health, current_health, temp_hp, bonus_max}) {
-
-
     return (
         <>
             <div class="hp-adjuster">

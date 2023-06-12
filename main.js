@@ -4,8 +4,9 @@ const load_characters = require('./load_characters.js')
 
 function createWindow() {
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1238,
+        height: 920,
+        resizable: false,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
