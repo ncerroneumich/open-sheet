@@ -1,34 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# D&D Character Sheet
 
-## Getting Started
+![D&D Character Sheet](character_sheet.png)
 
-First, run the development server:
+Welcome to the D&D Character Sheet project! This project aims to provide a user-friendly and customizable character sheet for Dungeons & Dragons (D&D) players. With this character sheet, you can easily track and manage your character's abilities, attributes, inventory, spells, and more.
+
+## Features
+
+- **Interactive Interface**: Enjoy a dynamic and interactive user interface that allows you to fill in and update your character's information with ease.
+- **Customizability**: Personalize your character sheet by choosing different themes, colors, and layouts that suit your preferences.
+- **Automated Calculations**: Take advantage of automated calculations for attributes, modifiers, skill checks, and saving throws to streamline your gameplay.
+- **Inventory Management**: Keep track of your character's equipment, items, and inventory weight effortlessly.
+- **Spellbook**: Organize and manage your character's spells, spell slots, and casting details conveniently.
+- **Print and Save**: Print your character sheet or save it as a PDF for offline access or sharing with your fellow players.
+
+## Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+git clone https://github.com/your-username/dnd-character-sheet.git
