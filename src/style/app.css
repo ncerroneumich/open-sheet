@@ -66,8 +66,25 @@
 }
 
 .character-sheet-header-hp {
+    outline: 2px solid black;
+    padding: 10px;
     display: inline-block;
-    vertical-align: top;
+    position: absolute;
+    top: 80px;
+    right: 70px;
+}
+
+.hp-add {
+    height: 30px;
+    width: 30px;
+    background-color: green;
+    margin-bottom: 5px;
+}
+.hp-sub {
+    height: 30px;
+    width: 30px;
+    background-color: red;
+    margin-top: 5px;
 }
 
 /* Saving Throws */
