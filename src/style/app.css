@@ -67,11 +67,10 @@
 
 .character-sheet-header-hp {
     outline: 2px solid black;
+    vertical-align: top;
+    margin-top: 70px;
     padding: 10px;
     display: inline-block;
-    position: absolute;
-    top: 80px;
-    right: 70px;
 }
 
 .hp-add {
