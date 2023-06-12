@@ -1,56 +1,91 @@
 export default function Skills() {
   return (
     <div className="skill-box">
+        <p className="skill-text">Skills</p>
         <div className="skill" id="acrobatics">
-            Acrobatics dex [mod]
+            <p className="skill-name">Acrobatics</p>
+            <p className="skill-as">DEX</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="animal-handling">
-            Animal Handling wis [mod]
+            <p className="skill-name">Animal Handling</p>
+            <p className="skill-as">WIS</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="arcana">
-            Arcana int [mod]
+            <p className="skill-name">Arcana</p>
+            <p className="skill-as">INT</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="athletics">
-            Athletics str [mod]
+            <p className="skill-name">Atheltics</p>
+            <p className="skill-as">STR</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="deception">
-            Deception cha [mod]
+            <p className="skill-name">Deception</p>
+            <p className="skill-as">WIS</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="history">
-            History int [mod]
+            <p className="skill-name">History</p>
+            <p className="skill-as">INT</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="insight">
-            Insight wis [mod]
+            <p className="skill-name">Insight</p>
+            <p className="skill-as">WIS</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="intimidation">
-            Intimidation cha [mod]
+            <p className="skill-name">Intimidation</p>
+            <p className="skill-as">CHA</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="investigation">
-            Investigation int [mod]
+            <p className="skill-name">Investigation</p>
+            <p className="skill-as">INT</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="medicine">
-            Medicine wis [mod]
+            <p className="skill-name">Medicine</p>
+            <p className="skill-as">WIS</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="nature">
-            Nature int [mod]
+            <p className="skill-name">Nature</p>
+            <p className="skill-as">INT</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="perception">
-            Perception wis [mod]
+            <p className="skill-name">Perception</p>
+            <p className="skill-as">WIS</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="persuasion">
-            Persausion cha [mod]
+        <p className="skill-name">Persuasion</p>
+            <p className="skill-as">CHA</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="religion">
-            Religion int [mod]
+            <p className="skill-name">Religion</p>
+            <p className="skill-as">INT</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="sleight-of-hand">
-            Sleight of Hand dex [mod]
+            <p className="skill-name">Sleight of Hand</p>
+            <p className="skill-as">DEX</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="stealth">
-            Stealth dex [mod]
+            <p className="skill-name">Stealth</p>
+            <p className="skill-as">DEX</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
         <div className="skill" id="survival">
-            Survival wis [mod]
+            <p className="skill-name">Survival</p>
+            <p className="skill-as">WIS</p>
+            <p className="skill-mod">[skill_mod]</p>
         </div>
     </div>
   )

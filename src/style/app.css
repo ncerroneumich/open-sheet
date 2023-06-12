@@ -4,6 +4,7 @@
     width: 1200px;
     height: 280px;
     outline: 3px black solid;
+    margin: 10px;
 }
 
 .character-sheet-portrait {
@@ -67,4 +68,58 @@
 .character-sheet-header-hp {
     display: inline-block;
     vertical-align: top;
+}
+
+/* Saving Throws */
+
+.saving-throw-box {
+    outline: 3px black solid;
+    width: 300px;
+    height: 70px;
+    margin: 10px;
+}
+
+.st-text {
+    text-align: center;
+}
+
+.st-box {
+    display: inline-block;
+    width: 100px;
+}
+
+/* Skills */
+
+.skill-box {
+    outline: 3px black solid;
+    width: 300px;
+    height: 490px;
+    margin: 10px;
+}
+
+.skill-text {
+    text-align: center;
+}
+
+.skill {
+    border-bottom: 1px solid black;
+    height: 26px;
+}
+
+.skill-name, .skill-as, .skill-mod {
+    display: inline-block;
+    margin: 0 0;
+}
+
+.skill-name {
+    width: 50%;
+}
+
+.skill-as {
+    width: 10%;
+}
+
+.skill-mod {
+    text-align: right;
+    width: 40%;
 }

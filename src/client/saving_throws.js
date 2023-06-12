@@ -1,6 +1,7 @@
 export default function SavingThrows() {
   return (
     <div className="saving-throw-box">
+        <p className="st-text">Saving Throws</p>
         <div className="st-row">
             <div className="st-box" id="st-str">
                 STR +[mod]
