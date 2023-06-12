@@ -4,7 +4,8 @@ Welcome to Open Sheet! This project aims to provide a user-friendly and customiz
 
 ## Features
 
-- **Interactive Interface**: It's really cool. Trust me bro...
+- **Lots of Features**: It's really cool. Trust me bro...
+- **Details**: Coming soon...
 
 ## Implementation
 
