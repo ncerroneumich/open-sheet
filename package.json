@@ -11,6 +11,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hyperjump/json-schema": "^1.5.1",
+    "dnd5e_json_schema": "github:brianwendt/dnd5e_json_schema",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
     "next": "13.4.4",

@@ -1,5 +1,5 @@
 import Characters from "@/client/characters"
-import Sheet from "@/app/sheet"
+import Sheet from "@/client/sheet"
 
 export default function Home() {
   return (

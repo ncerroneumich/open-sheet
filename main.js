@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const load_characters = require('./load_characters.js')
+const Character = require('dnd5e_json_schema')
 
 function createWindow() {
     const win = new BrowserWindow({

@@ -17,8 +17,8 @@ export default function Characters() {
       {characters.map((c, i) => {
         return <p key={i}>
                  <b>Name: </b> {c.name}
-                 <b> Class: </b> {c.class}
-                 <b> Race: </b> {c.race}
+                 <b> Class: </b> {c.classes[0].name}
+                 <b> Race: </b> {c.race.subtype} {c.race.name}
                </p>
       })}
     </div>
