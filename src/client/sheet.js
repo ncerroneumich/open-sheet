@@ -4,57 +4,57 @@ import Header from "@/client/header"
 import SavingThrows from "@/client/saving_throws"
 import Skills from "@/client/skills"
 import Panel from "@/client/panel"
-import Characters from "@/client/characters"
 
 import { useEffect, useState,  } from 'react';
 
 export default function Sheet() {
-  const [characters, setCharacters] = useState([]);
+  const [character, setCharacter] = useState(null);
+  const [name, setName] = useState();
+  const [race, setRace] = useState();
+  const [classes, setClasses] = useState();
+  const [background, setBackground] = useState();
+  const [alignment, setAlignment] = useState();
+  const [xp, setXp] = useState();
+  const [ability_scores, setAbilityScores] = useState();
+  const [speeds, setSpeeds] = useState();
+  const [hit_points, setHitPoints] = useState();
+
+  let props_set = false;
+
+  // Set the character upon initial rendering,
+  // then set the rest of the characteristics
+  // once the character is set
 
   useEffect(() => {
     window.api.get_characters().then((c) => {
-      setCharacters(c);
-    })
+      setCharacter(c[0]);
+    });
   }, []);
 
-  const character = characters[0];
-  console.log(character)
-
-  // Unconditional props
-
-  const header_props = {
-    "name": character.name,
-    "race": character.race.name,
-    "classes": character.classes.map((c) => { 
-      return {
-        "name": c.name,
-        "level": c.level
-      }
-    }),
-    "background": character.background.name,
-    "alignment": character.alignment,
-    "size": character.race.size,
-    "xp": character.xp,
-    "ability_scores": character.ability_scores,
-    "speeds": character.speed,
-    "hit_points": character.hit_points
-  };
-
-  // Conditional props
+  useEffect(() => {
+    // Don't try and update during the initial render
+    if (character) {
+      setName(character.name);
+      setRace(character.race);
+      setClasses(character.classes);
+      setBackground(character.background);
+      setAlignment(character.alignment);
+      setXp(character.xp);
+      setAbilityScores(character.ability_scores);
+      setSpeeds(character.speed);
+      setHitPoints(character.hit_points);
+      props_set = true;
+    }
+  }, [character]);
 
   return (
     <>
+    {props_set ? 
+     <p>tset1</p> : <p>tset2</p> }
       <Header></Header>
       <SavingThrows></SavingThrows>
       <Skills></Skills>
       <Panel></Panel>
-      {/* {characters.map((c, i) => {
-        return <p key={i}>
-                 <b>Name: </b> {c.name}
-                 <b> Class: </b> {c.classes[0].name}
-                 <b> Race: </b> {c.race.subtype} {c.race.name}
-               </p>
-      })} */}
     </>
   );
 }

@@ -1,7 +1,8 @@
 import HP from "@/client/hp"
 import '@/style/app.css'
 
-export default function Header() {
+export default function Header(props) {
+    
     return (
         <div className="sheet-header">
             <img className="character-sheet-portrait" src="https://i.pinimg.com/originals/1b/2b/21/1b2b215cad3448912075b9b2852db6fe.jpg"></img>

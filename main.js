@@ -1,20 +1,27 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, session } = require('electron')
 const path = require('path')
 const load_characters = require('./load_characters.js')
-const Character = require('dnd5e_json_schema')
+const { default: installExtension, REDUX_DEVTOOLS } = require('electron-devtools-installer');
+
+const dev = !app.isPackaged;
 
 function createWindow() {
     const win = new BrowserWindow({
         width: 1238,
         height: 920,
-        resizable: false,
+        resizable: true,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
     });
 
-    win.loadURL('http://localhost:3000');
-    win.webContents.openDevTools()
+    if (dev) {
+        installExtension(REDUX_DEVTOOLS)
+        .then((name) => console.log(`Added Extension:  ${name}`))
+        .catch((err) => console.log('An error occurred: ', err));
+        win.loadURL('http://localhost:3000');
+        win.webContents.openDevTools();
+    }
 }
 
 app.whenReady().then(() => {
