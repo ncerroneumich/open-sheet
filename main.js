@@ -16,9 +16,6 @@ function createWindow() {
     });
 
     if (dev) {
-        installExtension(REDUX_DEVTOOLS)
-        .then((name) => console.log(`Added Extension:  ${name}`))
-        .catch((err) => console.log('An error occurred: ', err));
         win.loadURL('http://localhost:3000');
         win.webContents.openDevTools();
     }

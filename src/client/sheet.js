@@ -10,16 +10,14 @@ import { useEffect, useState,  } from 'react';
 export default function Sheet() {
   const [character, setCharacter] = useState(null);
   const [name, setName] = useState();
-  const [race, setRace] = useState();
-  const [classes, setClasses] = useState();
+  const [race, setRace] = useState({});
+  const [classes, setClasses] = useState([]);
   const [background, setBackground] = useState();
   const [alignment, setAlignment] = useState();
   const [xp, setXp] = useState();
   const [ability_scores, setAbilityScores] = useState();
-  const [speeds, setSpeeds] = useState();
+  const [speed, setSpeed] = useState();
   const [hit_points, setHitPoints] = useState();
-
-  let props_set = false;
 
   // Set the character upon initial rendering,
   // then set the rest of the characteristics
@@ -41,16 +39,24 @@ export default function Sheet() {
       setAlignment(character.alignment);
       setXp(character.xp);
       setAbilityScores(character.ability_scores);
-      setSpeeds(character.speed);
+      setSpeed(character.speed);
       setHitPoints(character.hit_points);
-      props_set = true;
     }
   }, [character]);
 
+  if (name && race && classes && background && alignment && xp && ability_scores && speed && hit_points) {
+    return (
+      <>
+        <Header> props={{name, race, classes, background, alignment, xp, ability_scores, speed, hit_points}} </Header>
+        <SavingThrows></SavingThrows>
+        <Skills></Skills>
+        <Panel></Panel>
+      </>
+    )
+  }
+
   return (
     <>
-    {props_set ? 
-     <p>tset1</p> : <p>tset2</p> }
       <Header></Header>
       <SavingThrows></SavingThrows>
       <Skills></Skills>
