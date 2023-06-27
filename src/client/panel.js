@@ -1,11 +1,11 @@
 "use client";
+import Spells from "@/client/spells"
 
 import '@/style/app.css'
 import { useState } from 'react';
 
-
-export default function Panel() {
-
+export default function Panel(props) {
+    const { spells } = props;
     const [selected_tab, setSelectedTab] = useState(1);
 
     function handleTabClick(tab_num) {
@@ -15,37 +15,37 @@ export default function Panel() {
     function MainContent() {
         return (
             <p>Main Page</p>
-        )
+        );
     }
 
     function SpellsContent() {
         return (
-            <p>Spells Page</p>
-        )
+            <Spells spells={spells}></Spells>
+        );
     }
 
     function InventoryContent() {
         return (
             <p>Inventory Page</p>
-        )
+        );
     }
 
     function FeaturesContent() {
         return (
             <p>Features Page</p>
-        )
+        );
     }
 
     function BioContent() {
         return (
             <p>Bio Page</p>
-        )
+        );
     }
 
     function NotesContent() {
         return (
             <p>Notes Page</p>
-        )
+        );
     }
 
     return (

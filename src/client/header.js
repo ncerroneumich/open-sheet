@@ -2,7 +2,7 @@ import HP from "@/client/hp"
 import '@/style/app.css'
 
 export default function Header(props) {
-    const { name, race, classes, background, alignment, xp, ability_scores, speed, hit_points, ability_modifiers, level, proficiency_bonus, saving_throws } = props
+    const { name, race, classes, background, alignment, xp, ability_scores, speed, hit_points, ability_modifiers, level, proficiency_bonus, saving_throws } = props;
     let class_text = [];
 
     // Concatonate the text for the classes

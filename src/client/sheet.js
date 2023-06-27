@@ -168,9 +168,8 @@ export default function Sheet() {
           saving_throws={saving_throws}>
         </SavingThrows>
         <Skills skills={skills}></Skills>
-        <Panel></Panel>
+        <Panel spells={character.spells}></Panel>
       </>
-      
     );
   }
 
