@@ -1,7 +1,6 @@
-const { app, BrowserWindow, ipcMain, session } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const load_characters = require('./load_characters.js')
-const { default: installExtension, REDUX_DEVTOOLS } = require('electron-devtools-installer');
 
 const dev = !app.isPackaged;
 
