@@ -78,7 +78,12 @@ export default function Header(props) {
                     </div>
                 </div>
                 <div className="character-sheet-header-hp">
-                    <HP max_health={10} current_health={10} temp_hp={0} bonus_max={0}></HP>
+                    <HP 
+                        max_health={hit_points.max} 
+                        current_health={hit_points.current} 
+                        temp_hp={0} 
+                        bonus_max={0}>
+                    </HP>
                     <button className="short-rest">Short Rest</button>
                     <button className="long-rest">Long Rest</button>
                 </div>

@@ -11,6 +11,13 @@ function as_mod(as) {
   return Math.floor((as - 10) / 2);
 }
 
+const ProficiencyLevel = {
+  not_proficient: 0,
+  proficient: 1,
+  half_proficient: 2,
+  expertise: 3
+}
+
 export default function Sheet() {
   const [character, set_character] = useState();
   // Dependent state
@@ -31,6 +38,25 @@ export default function Sheet() {
     "int": {"value": 0, proficient: false},
     "wis": {"value": 0, proficient: false},
     "cha": {"value": 0, proficient: false},
+  });
+  const [skills, set_skills] = useState({
+    "acrobatics": {"value": 0, "ability": "dex", proficiency: ProficiencyLevel.not_proficient},
+    "animal_handling": {"value": 0, "ability": "wis", proficiency: ProficiencyLevel.not_proficient},
+    "arcana": {"value": 0, "ability": "int", proficiency: ProficiencyLevel.not_proficient},
+    "athletics": {"value": 0, "ability": "str", proficiency: ProficiencyLevel.not_proficient},
+    "deception": {"value": 0, "ability": "cha", proficiency: ProficiencyLevel.not_proficient},
+    "history": {"value": 0, "ability": "int",proficiency: ProficiencyLevel.not_proficient},
+    "insight": {"value": 0, "ability": "wis", proficiency: ProficiencyLevel.not_proficient},
+    "intimidation": {"value": 0, "ability": "cha", proficiency: ProficiencyLevel.not_proficient},
+    "investigation": {"value": 0, "ability": "int", proficiency: ProficiencyLevel.not_proficient},
+    "medicine": {"value": 0, "ability": "wis", proficiency: ProficiencyLevel.not_proficient},
+    "nature": {"value": 0, "ability": "int", proficiency: ProficiencyLevel.not_proficient},
+    "perception": {"value": 0, "ability": "wis", proficiency: ProficiencyLevel.not_proficient},
+    "persuasion": {"value": 0, "ability": "cha", proficiency: ProficiencyLevel.not_proficient},
+    "religion": {"value": 0, "ability": "int", proficiency: ProficiencyLevel.not_proficient},
+    "sleight_of_hand": {"value": 0, "ability": "dex", proficiency: ProficiencyLevel.not_proficient},
+    "stealth": {"value": 0, "ability": "dex", proficiency: ProficiencyLevel.not_proficient},
+    "survival": {"value": 0, "ability": "wis", proficiency: ProficiencyLevel.not_proficient}
   });
 
 
@@ -81,17 +107,41 @@ export default function Sheet() {
       }
 
       // Saving Throws
-      for (const [key, value] of Object.entries(character.saving_throws)) {
-        if (value === true) {
-          set_saving_throws({
-            ...saving_throws,
-            key: {
-                  "value": (character.ability_scores[key] + temp_pb),
-                  "proficient": true
-                 }
-          })
+      let temp_saves = {}
+      for (const [key, value] of Object.entries(saving_throws)) {
+        if (key in character.saving_throws && character.saving_throws[key] === true) {
+          temp_saves[key] = {
+            "value": as_mod(character.ability_scores[key]) + temp_pb,
+            "proficient": true
+          }
+        } else {
+          temp_saves[key] = {
+            "value": as_mod(character.ability_scores[key]),
+            "proficient": false
+          }
         }
       }
+      set_saving_throws(temp_saves)
+
+      // Skills
+      let temp_skills = {}
+      for (const [key, value] of Object.entries(skills)) {
+        if (key in character.skills && character.skills[key] === true) {
+          temp_skills[key] = {
+            "value": as_mod(character.ability_scores[value.ability]) + temp_pb,
+            "ability": "dex",
+            proficiency: ProficiencyLevel.proficient
+          }
+        } else {
+          temp_skills[key] = {
+            "value": as_mod(character.ability_scores[value.ability]),
+            "ability": "dex",
+            proficiency: ProficiencyLevel.not_proficient
+          }
+        }
+      }
+      set_skills(temp_skills)
+      
     }
   }, [character]);
 
@@ -115,10 +165,12 @@ export default function Sheet() {
           saving_throws={saving_throws}>
         </Header>
         <SavingThrows 
-          profs={character.saving_throws} 
-          ability_scores={character.ability_scores}>
+          saving_throws={saving_throws}>
         </SavingThrows>
+        <Skills skills={skills}></Skills>
+        <Panel></Panel>
       </>
+      
     );
   }
 
