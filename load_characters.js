@@ -3,7 +3,7 @@ const path = require('path');
 const Ajv = require("ajv")
 const addFormats = require("ajv-formats")
 
-const folder_path = '/home/ncerrone/code/open-sheet-data/example_characters/'
+const folder_path = './example_characters/'
 
 function load_characters() {
     return new Promise((resolve, reject) => {
