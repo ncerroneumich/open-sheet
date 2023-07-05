@@ -103,14 +103,39 @@
     margin: 10px;
 }
 
+.st-row {
+    height: 25px;
+    width: 100%;
+}
+
 .st-text {
     text-align: center;
 }
 
 .st-box {
-    outline: 1px black dotted;
     display: inline-block;
-    width: 100px;
+    width: 27%;
+}
+
+.st-proficiency-label-0 {
+    margin-left: 3px;
+    margin-right: 5px;
+    border-radius: 50%;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    outline: 1px black solid;
+}
+
+.st-proficiency-label-1 {
+    margin-left: 3px;
+    margin-right: 5px;
+    border-radius: 50%;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    outline: 1px black solid;
+    background-color: black;
 }
 
 /* Skills */
