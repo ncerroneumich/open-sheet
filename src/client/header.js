@@ -1,6 +1,6 @@
 import HP from "@/client/hp"
 import '@/style/app.css'
-
+import display_modifier from "@/scripts/display_modifier"
 export default function Header(props) {
     const { name, race, classes, background, alignment, xp, ability_scores, speed, hit_points, ability_modifiers, level, proficiency_bonus, saving_throws } = props;
     let class_text = [];
@@ -28,37 +28,37 @@ export default function Header(props) {
                     <div className="character-sheet-header-level-details">
                         <p>Level {level}</p>
                         <p>{xp} XP</p>
-                        <p>Proficiency +{proficiency_bonus}</p>
+                        <p>Proficiency {display_modifier(proficiency_bonus)}</p>
                     </div>
                     <div className="character-sheet-header-ability-scores">
                         <div className="as-box" id="as-str">
                             <p>Strength</p>
-                            <p>{ability_modifiers.str}</p>
+                            <p>{display_modifier(ability_modifiers.str)}</p>
                             <p>{ability_scores.str}</p>
                         </div>
                         <div className="as-box" id="as-dex">
                             <p>Dexterity</p>
-                            <p>{ability_modifiers.dex}</p>
+                            <p>{display_modifier(ability_modifiers.dex)}</p>
                             <p>{ability_scores.dex}</p>
                         </div>
                         <div className="as-box" id="as-con">
                             <p>Constitution</p>
-                            <p>{ability_modifiers.con}</p>
+                            <p>{display_modifier(ability_modifiers.con)}</p>
                             <p>{ability_scores.con}</p>
                         </div>
                         <div className="as-box" id="as-int">
                             <p>Inteligence</p>
-                            <p>{ability_modifiers.int}</p>
+                            <p>{display_modifier(ability_modifiers.int)}</p>
                             <p>{ability_scores.int}</p>
                         </div>
                         <div className="as-box" id="as-wis">
                             <p>Wisdom</p>
-                            <p>{ability_modifiers.wis}</p>
+                            <p>{display_modifier(ability_modifiers.wis)}</p>
                             <p>{ability_scores.wis}</p>
                         </div>
                         <div className="as-box" id="as-cha">
                             <p>Charisma</p>
-                            <p>{ability_modifiers.cha}</p>
+                            <p>{display_modifier(ability_modifiers.cha)}</p>
                             <p>{ability_scores.cha}</p>
                         </div>
                     </div>
@@ -74,7 +74,7 @@ export default function Header(props) {
                     </div>
                     <div className="vertical-box" id="initiative">
                         <div>Initiative</div>
-                        {ability_modifiers.dex}
+                        {display_modifier(ability_modifiers.dex)}
                     </div>
                 </div>
                 <div className="character-sheet-header-hp">
