@@ -13,12 +13,13 @@ export default function HP({hit_points, set_hit_points}) {
     function handle_submit(event, modifier) {
         event.preventDefault();
 
-        let current_hit_points = Math.min(hit_points.max, Math.max(0, hit_points.current + modifier * input_value));
+        const current_hit_points = Math.min(hit_points.max, Math.max(0, hit_points.current + modifier * input_value));
 
         set_hit_points({
             ...hit_points,
             "current": current_hit_points,
         });
+        set_input_value("");
     }
 
     return (
