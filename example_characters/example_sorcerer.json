@@ -17,6 +17,7 @@
             }
         ]
     },
+    "xp": 0,
     "classes": [{
             "name": "Sorcerer",
             "subtype": "Draconic Ancestor",
