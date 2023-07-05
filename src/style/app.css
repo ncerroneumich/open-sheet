@@ -137,7 +137,7 @@
 }
 
 .skill-name {
-    width: 50%;
+    width: 40%;
 }
 
 .skill-as {
@@ -147,6 +147,55 @@
 .skill-mod {
     text-align: right;
     width: 40%;
+}
+
+.proficiency-label-0 {
+    margin-left: 3px;
+    margin-right: 5px;
+    border-radius: 50%;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    outline: 1px black solid;
+}
+
+.proficiency-label-1 {
+    margin-left: 3px;
+    margin-right: 5px;
+    border-radius: 50%;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    outline: 1px black solid;
+    background: linear-gradient(-45deg, rgb(0, 0, 0) 50%, transparent 50%);
+}
+
+.proficiency-label-2 {
+    margin-left: 3px;
+    margin-right: 5px;
+    border-radius: 50%;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    outline: 1px black solid;
+    background-color: black;
+}
+
+.proficiency-label-3 {
+    margin-left: 3px;
+    margin-right: 5px;
+    border-radius: 50%;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    outline: 1px black solid;
+    outline-offset: 2px;
+}
+
+.proficiency-button {
+    border-radius: 50%;
+    width: 10px;
+    height: 15px;
 }
 
 /* Panel */

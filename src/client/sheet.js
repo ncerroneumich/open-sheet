@@ -13,8 +13,8 @@ function as_mod(as) {
 
 const ProficiencyLevel = {
   not_proficient: 0,
-  proficient: 1,
-  half_proficient: 2,
+  half_proficient: 1,
+  proficient: 2,
   expertise: 3
 }
 
@@ -133,7 +133,8 @@ export default function Sheet() {
       // Skills
       let temp_skills = {}
       for (const [key, value] of Object.entries(skills)) {
-        if (key in character.skills && character.skills[key] === true) {
+        const capital_key = key.charAt(0).toUpperCase() + key.slice(1);
+        if (capital_key in character.skills && character.skills[capital_key] === true) {
           temp_skills[key] = {
             "value": as_mod(character.ability_scores[value.ability]) + temp_pb,
             "ability": "dex",

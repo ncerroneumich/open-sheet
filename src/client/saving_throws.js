@@ -1,4 +1,5 @@
 import display_modifier from "@/scripts/display_modifier"
+import "@/style/app.css"
 
 
 export default function SavingThrows(props) {
