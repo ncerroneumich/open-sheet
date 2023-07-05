@@ -77,6 +77,10 @@
     display: inline-block;
 }
 
+.hp-input {
+    width: 150px;
+}
+
 .hp-add {
     height: 30px;
     width: 30px;

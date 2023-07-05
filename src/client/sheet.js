@@ -31,6 +31,10 @@ export default function Sheet() {
   });
   const [level, set_level] = useState(0);
   const [proficiency_bonus, set_pb] = useState();
+  const [hit_points, set_hit_points] = useState({
+    "max": 0,
+    "current": 0
+  });
   const [saving_throws, set_saving_throws] = useState({
     "str": {"value": 0, proficient: false},
     "dex": {"value": 0, proficient: false},
@@ -106,6 +110,9 @@ export default function Sheet() {
         set_pb(6);
       }
 
+      // Hit Points
+      set_hit_points(character.hit_points);
+
       // Saving Throws
       let temp_saves = {}
       for (const [key, value] of Object.entries(saving_throws)) {
@@ -158,7 +165,8 @@ export default function Sheet() {
           xp={character.xp} 
           ability_scores={character.ability_scores} 
           speed={character.speed} 
-          hit_points={character.hit_points}
+          hit_points={hit_points}
+          set_hit_points={set_hit_points}
           ability_modifiers={ability_modifiers}
           level={level}
           proficiency_bonus={proficiency_bonus}

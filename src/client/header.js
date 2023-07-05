@@ -2,7 +2,7 @@ import HP from "@/client/hp"
 import '@/style/app.css'
 import display_modifier from "@/scripts/display_modifier"
 export default function Header(props) {
-    const { name, race, classes, background, alignment, xp, ability_scores, speed, hit_points, ability_modifiers, level, proficiency_bonus, saving_throws } = props;
+    const { name, race, classes, background, alignment, xp, ability_scores, speed, hit_points, set_hit_points, ability_modifiers, level, proficiency_bonus, saving_throws } = props;
     let class_text = [];
 
     // Concatonate the text for the classes
@@ -79,10 +79,8 @@ export default function Header(props) {
                 </div>
                 <div className="character-sheet-header-hp">
                     <HP 
-                        max_health={hit_points.max} 
-                        current_health={hit_points.current} 
-                        temp_hp={0} 
-                        bonus_max={0}>
+                        hit_points={hit_points}
+                        set_hit_points={set_hit_points}>
                     </HP>
                     <button className="short-rest">Short Rest</button>
                     <button className="long-rest">Long Rest</button>
