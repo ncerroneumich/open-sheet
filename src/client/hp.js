@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 
 export default function HP({hit_points, set_hit_points}) {
-    const [input_value, set_input_value] = useState();
+    const [input_value, set_input_value] = useState("");
 
     function handle_change(event) {
         const number = event.target.value.replace(/[^0-9]/g, '');

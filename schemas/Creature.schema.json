@@ -41,8 +41,7 @@
                     "type": ["integer", "boolean"],
                     "default": 0
                 }
-            },
-            "description": "Speed in feet"
+            }
         },
         "hit_points": {
             "type": "object",
