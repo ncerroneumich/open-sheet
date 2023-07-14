@@ -1,5 +1,5 @@
 "use client";
-import Spells from "@/client/spells"
+import Spells from "@/app/sheet/spells"
 
 import '@/style/app.css'
 import { useState } from 'react';

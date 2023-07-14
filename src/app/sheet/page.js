@@ -1,9 +1,9 @@
 "use client";
 
-import Header from "@/client/header"
-import SavingThrows from "@/client/saving_throws"
-import Skills from "@/client/skills"
-import Panel from "@/client/panel"
+import Header from "@/app/sheet/header"
+import SavingThrows from "@/app/sheet/saving_throws"
+import Skills from "@/app/sheet/skills"
+import Panel from "@/app/sheet/panel"
 
 import { useEffect, useState,  } from 'react';
 

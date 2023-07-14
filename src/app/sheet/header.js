@@ -1,4 +1,4 @@
-import HP from "@/client/hp"
+import HP from "@/app/sheet/hp"
 import '@/style/app.css'
 import display_modifier from "@/scripts/display_modifier"
 export default function Header(props) {
