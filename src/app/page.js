@@ -12,8 +12,7 @@ export default function Start() {
 	// Fetch all characters
 	useEffect(() => {
 		window.api.get_characters().then((c) => {
-				console.log(`Setting characters!`)
-				setCharacters(c)
+				setCharacters(c);
 		});
   	}, []);
 
