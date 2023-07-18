@@ -17,7 +17,10 @@ export default function Create() {
 
     function BasicsContent() {
         return (
-            <input value={name} onChange={handleNameChange} type="text"></input>
+            <>
+                <span>Character Name: </span>
+                <input value={name} onChange={handleNameChange} type="text"></input>
+            </>
         );
     }
 
