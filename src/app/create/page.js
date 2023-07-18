@@ -11,9 +11,13 @@ export default function Create() {
         setSelectedTab(tab_num);
     }
 
+    function handleNameChange(event) {
+        setName(event.target.value);
+    }
+
     function BasicsContent() {
         return (
-            <input value={name} type='text'></input>
+            <input value={name} onChange={handleNameChange} type="text"></input>
         );
     }
 
@@ -66,13 +70,13 @@ export default function Create() {
                 <button>Done!</button>
             </nav>
             <div className="panel-content">
-                {selected_tab === 1 && <BasicsContent></BasicsContent>}
-                {selected_tab === 2 && <RaceContent></RaceContent>}
-                {selected_tab === 3 && <ClassContent></ClassContent>}
-                {selected_tab === 4 && <BackgroundContent></BackgroundContent>}
-                {selected_tab === 5 && <ASContent></ASContent>}
-                {selected_tab === 6 && <EquipmentContent></EquipmentContent>}
-                {selected_tab === 7 && <BioContent></BioContent>}
+                {selected_tab === 1 && BasicsContent()}
+                {selected_tab === 2 && RaceContent()}
+                {selected_tab === 3 && ClassContent()}
+                {selected_tab === 4 && BackgroundContent()}
+                {selected_tab === 5 && ASContent()}
+                {selected_tab === 6 && EquipmentContent()}
+                {selected_tab === 7 && BioContent()}
             </div>
         </div>
     );
