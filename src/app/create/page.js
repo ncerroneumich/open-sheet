@@ -1,7 +1,7 @@
 "use client";
 
 import '@/style/app.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Create() {
     const [selected_tab, setSelectedTab] = useState(1);
@@ -59,6 +59,14 @@ export default function Create() {
             <p>Bio Page</p>
         );
     }
+
+    // Set the character upon initial rendering
+    useEffect(() => {
+        window.api.get_data().then(data => {
+            console.log("displaying data!")
+            console.log(data);
+        });
+    }, []);
 
     return (
         <div className="create-panel">

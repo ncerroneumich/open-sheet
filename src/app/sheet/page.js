@@ -66,7 +66,7 @@ export default function Sheet() {
 
   // Set the character upon initial rendering
   useEffect(() => {
-    window.api.get_characters().then((c) => {
+    window.api.get_characters().then(c => {
       set_character(c[0]);
     });
   }, []);

@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 
-function importer() {
+function data_importer() {
     // Classes
     const classes_path = './data/class';
     files = fs.readdirSync(classes_path);
@@ -14,4 +14,4 @@ function importer() {
     return classes;
 }
 
-console.log(importer());
+module.exports = data_importer;
