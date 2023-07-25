@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react';
 
 export default function Create() {
     const [selected_tab, setSelectedTab] = useState(1);
-    const [name, setName] = useState("")
+    const [name, setName] = useState("");
+    const [system_data, setSystemData] = useState([])
 
     function handleTabClick(tab_num) {
         setSelectedTab(tab_num);
@@ -31,9 +32,13 @@ export default function Create() {
     }
 
     function ClassContent() {
-        return (
-            <p>Class Page</p>
-        );
+        if (system_data) {
+            return system_data.map((c, i) => {
+                return (
+                    <div key={i} onClick={(event) => console.log(event.target.outerText)}>{c.class[0].name}</div>
+                );
+            })
+        }
     }
 
     function BackgroundContent() {
@@ -60,11 +65,10 @@ export default function Create() {
         );
     }
 
-    // Set the character upon initial rendering
+    // Fetch DnD data
     useEffect(() => {
         window.api.get_data().then(data => {
-            console.log("displaying data!")
-            console.log(data);
+            setSystemData(data);
         });
     }, []);
 
