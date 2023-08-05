@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 export default function Create() {
     const [selected_tab, setSelectedTab] = useState(1);
     const [name, setName] = useState("");
-    const [system_data, setSystemData] = useState([])
+    const [system_data, setSystemData] = useState()
 
     function handleTabClick(tab_num) {
         setSelectedTab(tab_num);
@@ -26,25 +26,33 @@ export default function Create() {
     }
 
     function RaceContent() {
-        return (
-            <p>Race Page</p>
-        );
+        if (system_data) {
+            return system_data["races"].map((race, i) => {
+                return (
+                    <div key={i} onClick={(event) => console.log(event.target.outerText)}>{race["name"]} ({race["source"]})</div>
+                );
+            });
+        }
     }
 
     function ClassContent() {
         if (system_data) {
-            return system_data.map((c, i) => {
+            return system_data["classes"].map((cls, i) => {
                 return (
-                    <div key={i} onClick={(event) => console.log(event.target.outerText)}>{c.class[0].name}</div>
+                    <div key={i} onClick={(event) => console.log(event.target.outerText)}>{cls.class[0].name}</div>
                 );
             })
         }
     }
 
     function BackgroundContent() {
-        return (
-            <p>Background Page</p>
-        );
+        if (system_data) {
+            return system_data["backgrounds"].map((bg, i) => {
+                return (
+                    <div key={i} onClick={(event) => console.log(event.target.outerText)}>{bg["name"]} ({bg["source"]})</div>
+                );
+            });
+        }
     }
 
     function ASContent() {
