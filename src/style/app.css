@@ -233,3 +233,7 @@
     width: 883px;
     height: 576px;
 }
+
+.ability-score-list {
+    list-style-type: none;
+}

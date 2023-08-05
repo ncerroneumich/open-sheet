@@ -6,7 +6,15 @@ import { useEffect, useState } from 'react';
 export default function Create() {
     const [selected_tab, setSelectedTab] = useState(1);
     const [name, setName] = useState("");
-    const [system_data, setSystemData] = useState()
+    const [system_data, setSystemData] = useState();
+    const [abilityScores, setAbilityScores] = useState({
+        Strength: 8,
+        Dexterity: 8,
+        Constitution: 8,
+        Intelligence: 8,
+        Wisdom: 8,
+        Charisma: 8,
+    });
 
     function handleTabClick(tab_num) {
         setSelectedTab(tab_num);
@@ -56,8 +64,68 @@ export default function Create() {
     }
 
     function ASContent() {
+        function calculateTotalPoints() {
+            let total = 0;
+            Object.values(abilityScores).forEach(score => {
+                if (score <= 13) {
+                    total += score - 8;
+                } else {
+                    // points required to go from 8 -> 13
+                    total += 5;
+                    // remaining points that cost double
+                    total += (score - 13) * 2;
+                }
+            })
+            return total;
+        };
+        
+        function handleIncrease (ability) {
+            let increase_cost = 1;
+            if (abilityScores[ability] + 1 > 13) {
+                increase_cost = 2;
+            }
+
+            if (calculateTotalPoints() + increase_cost <= 27 && abilityScores[ability] < 15) {
+                const updatedScores = { ...abilityScores };
+                updatedScores[ability] += 1;
+                setAbilityScores(updatedScores);
+            }
+        };
+        
+        function handleDecrease (ability) {
+            if (abilityScores[ability] > 8) {
+                const updatedScores = { ...abilityScores };
+                updatedScores[ability] -= 1;
+                setAbilityScores(updatedScores);
+            }
+        };
+
+        function handleASReset() {
+            setAbilityScores({
+                Strength: 8,
+                Dexterity: 8,
+                Constitution: 8,
+                Intelligence: 8,
+                Wisdom: 8,
+                Charisma: 8
+            });
+        }
+        
         return (
-            <p>Ability Scores Page</p>
+        <div>
+            <h2>Point Buy</h2>
+            <p>Total Points Remaining: {27 - calculateTotalPoints()}</p>
+            <ul>
+            {Object.entries(abilityScores).map(([ability, score]) => (
+                <li key={ability} class="ability-score-list">
+                    <span>{ability}: {score}{' '}</span>
+                    <button onClick={() => handleIncrease(ability)}>+</button>
+                    <button onClick={() => handleDecrease(ability)}>-</button>
+                </li>
+            ))}
+            </ul>
+            <button onClick={() => handleASReset()}>Reset Ablity Scores</button>
+        </div>
         );
     }
 
