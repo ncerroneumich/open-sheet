@@ -7,7 +7,7 @@ export default function Create() {
     const [selected_tab, setSelectedTab] = useState(1);
     const [name, setName] = useState("");
     const [system_data, setSystemData] = useState();
-    const [abilityScores, setAbilityScores] = useState({
+    const [ability_scores, setAbilityScores] = useState({
         Strength: 8,
         Dexterity: 8,
         Constitution: 8,
@@ -15,6 +15,9 @@ export default function Create() {
         Wisdom: 8,
         Charisma: 8,
     });
+    const [selected_race, setSelectedRace] = useState();
+    const [selected_class, setSelectedClass] = useState();
+    const [selected_background, setSelectedBackground] = useState();
 
     function handleTabClick(tab_num) {
         setSelectedTab(tab_num);
@@ -35,38 +38,54 @@ export default function Create() {
 
     function RaceContent() {
         if (system_data) {
-            return system_data["races"].map((race, i) => {
-                return (
-                    <div key={i} onClick={(event) => console.log(event.target.outerText)}>{race["name"]} ({race["source"]})</div>
-                );
-            });
+            return (
+                <div>
+                    {selected_race && <h1>Selected race: {selected_race["race"]["name"]}</h1>}
+                    {system_data["races"].map((race, i) => {
+                        return (
+                            <div key={i} onClick={(event) => setSelectedRace({index: i, race: race})}>{race["name"]} ({race["source"]})</div>
+                        );
+                    })}
+                </div>
+            );
+            
         }
     }
 
     function ClassContent() {
         if (system_data) {
-            return system_data["classes"].map((cls, i) => {
-                return (
-                    <div key={i} onClick={(event) => console.log(event.target.outerText)}>{cls.class[0].name}</div>
-                );
-            })
+            return (
+                <div>
+                    {selected_class && <h1>Selected class: {selected_class["class"]["class"][0]["name"]}</h1>}
+                    {system_data["classes"].map((cls, i) => {
+                        return (
+                            <div key={i} onClick={(event) => setSelectedClass({index: i, class: cls})}>{cls["class"][0]["name"]}</div>
+                        );
+                    })}
+                </div>
+            );
         }
     }
 
     function BackgroundContent() {
         if (system_data) {
-            return system_data["backgrounds"].map((bg, i) => {
-                return (
-                    <div key={i} onClick={(event) => console.log(event.target.outerText)}>{bg["name"]} ({bg["source"]})</div>
-                );
-            });
+            return (
+                <div>
+                    {selected_background && <h1>Selected background: {selected_background["background"]["name"]}</h1>}
+                    {system_data["backgrounds"].map((bg, i) => {
+                        return (
+                            <div key={i} onClick={(event) => setSelectedBackground({index: i, background: bg})}>{bg["name"]} ({bg["source"]})</div>
+                        );
+                    })}
+                </div>
+            );
         }
     }
 
     function ASContent() {
         function calculateTotalPoints() {
             let total = 0;
-            Object.values(abilityScores).forEach(score => {
+            Object.values(ability_scores).forEach(score => {
                 if (score <= 13) {
                     total += score - 8;
                 } else {
@@ -81,20 +100,20 @@ export default function Create() {
         
         function handleIncrease (ability) {
             let increase_cost = 1;
-            if (abilityScores[ability] + 1 > 13) {
+            if (ability_scores[ability] + 1 > 13) {
                 increase_cost = 2;
             }
 
-            if (calculateTotalPoints() + increase_cost <= 27 && abilityScores[ability] < 15) {
-                const updatedScores = { ...abilityScores };
+            if (calculateTotalPoints() + increase_cost <= 27 && ability_scores[ability] < 15) {
+                const updatedScores = { ...ability_scores };
                 updatedScores[ability] += 1;
                 setAbilityScores(updatedScores);
             }
         };
         
         function handleDecrease (ability) {
-            if (abilityScores[ability] > 8) {
-                const updatedScores = { ...abilityScores };
+            if (ability_scores[ability] > 8) {
+                const updatedScores = { ...ability_scores };
                 updatedScores[ability] -= 1;
                 setAbilityScores(updatedScores);
             }
@@ -116,13 +135,13 @@ export default function Create() {
             <h2>Point Buy</h2>
             <p>Total Points Remaining: {27 - calculateTotalPoints()}</p>
             <ul>
-            {Object.entries(abilityScores).map(([ability, score]) => (
-                <li key={ability} class="ability-score-list">
-                    <span>{ability}: {score}{' '}</span>
-                    <button onClick={() => handleIncrease(ability)}>+</button>
-                    <button onClick={() => handleDecrease(ability)}>-</button>
-                </li>
-            ))}
+                {Object.entries(ability_scores).map(([ability, score]) => (
+                    <li key={ability} class="ability-score-list">
+                        <span>{ability}: {score}{' '}</span>
+                        <button onClick={() => handleIncrease(ability)}>+</button>
+                        <button onClick={() => handleDecrease(ability)}>-</button>
+                    </li>
+                ))} 
             </ul>
             <button onClick={() => handleASReset()}>Reset Ablity Scores</button>
         </div>
