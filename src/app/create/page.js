@@ -18,20 +18,33 @@ export default function Create() {
     const [selected_race, setSelectedRace] = useState();
     const [selected_class, setSelectedClass] = useState();
     const [selected_background, setSelectedBackground] = useState();
+    const [custom_as_increase, setCustomASIncrease] = useState(false);
 
     function handleTabClick(tab_num) {
         setSelectedTab(tab_num);
     }
 
-    function handleNameChange(event) {
-        setName(event.target.value);
-    }
-
     function BasicsContent() {
+        function handleNameChange(event) {
+            setName(event.target.value);
+        }
+        function handleCustomRacialIncrease() {
+            setCustomASIncrease(!custom_as_increase);
+        }
+
         return (
             <>
                 <span>Character Name: </span>
                 <input value={name} onChange={handleNameChange} type="text"></input>
+                <br></br>
+                <span>Customize Racial Ability Score Increases</span>
+                <input type="checkbox" checked={custom_as_increase} onClick={() => handleCustomRacialIncrease()}></input>
+                <br></br>
+                <select>
+                    <option value="standard-array">Standard Array</option>
+                    <option value="point-buy">Point Buy</option>
+                    <option value="custom">Custom</option>
+                </select>
             </>
         );
     }
@@ -160,6 +173,15 @@ export default function Create() {
         );
     }
 
+    function handleDoneClick() {
+        console.log("---Current Character---")
+        console.log("name: ", name)
+        console.log("race: ", selected_race)
+        console.log("class: ", selected_class)
+        console.log("background: ", selected_background)
+
+    }
+
     // Fetch DnD data
     useEffect(() => {
         window.api.get_data().then(data => {
@@ -177,7 +199,7 @@ export default function Create() {
                 <button className='create-panel-button' href='#as' onClick={() => handleTabClick(5)}>Ability Scores</button>
                 <button className='create-panel-button' href='#equipment' onClick={() => handleTabClick(6)}>Equipment</button>
                 <button className='create-panel-button' href='#bio' onClick={() => handleTabClick(7)}>Bio</button>
-                <button>Done!</button>
+                <button onClick={() => handleDoneClick()}>Done!</button>
             </nav>
             <div className="panel-content">
                 {selected_tab === 1 && BasicsContent()}
