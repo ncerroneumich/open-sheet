@@ -19,6 +19,7 @@ export default function Create() {
     const [selected_class, setSelectedClass] = useState();
     const [selected_background, setSelectedBackground] = useState();
     const [custom_as_increase, setCustomASIncrease] = useState(false);
+    const [as_type, setASType] = useState("standard-array")
 
     function handleTabClick(tab_num) {
         setSelectedTab(tab_num);
@@ -28,19 +29,24 @@ export default function Create() {
         function handleNameChange(event) {
             setName(event.target.value);
         }
-        function handleCustomRacialIncrease() {
+
+        function handleCustomRacialIncreaseClick() {
             setCustomASIncrease(!custom_as_increase);
         }
 
+        function handleAbilityScoreTypeChange(event) {
+            setASType(event.target.value);
+        }
+        
         return (
             <>
                 <span>Character Name: </span>
                 <input value={name} onChange={handleNameChange} type="text"></input>
                 <br></br>
                 <span>Customize Racial Ability Score Increases</span>
-                <input type="checkbox" checked={custom_as_increase} onClick={() => handleCustomRacialIncrease()}></input>
+                <input type="checkbox" checked={custom_as_increase} onClick={() => handleCustomRacialIncreaseClick()}></input>
                 <br></br>
-                <select>
+                <select onChange={(e) => handleAbilityScoreTypeChange(e)}>
                     <option value="standard-array">Standard Array</option>
                     <option value="point-buy">Point Buy</option>
                     <option value="custom">Custom</option>
@@ -50,18 +56,43 @@ export default function Create() {
     }
 
     function RaceContent() {
+
+        function onRaceClick(event, i, race) {
+            setSelectedRace({index: i, race: race});
+
+        }
+
         if (system_data) {
-            return (
-                <div>
-                    {selected_race && <h1>Selected race: {selected_race["race"]["name"]}</h1>}
-                    {system_data["races"].map((race, i) => {
-                        return (
-                            <div key={i} onClick={(event) => setSelectedRace({index: i, race: race})}>{race["name"]} ({race["source"]})</div>
-                        );
-                    })}
-                </div>
-            );
-            
+            if (selected_race) {
+                return (
+                    <div>
+                        {<h1>Selected race: {selected_race["race"]["name"]}</h1>}
+                        {selected_race["race"]["entries"].map((entry) => {
+                            return (
+                                <>
+                                    <h1>{entry.name}</h1>
+                                    <p>{entry.entries[0]}</p>
+                                </>  
+                            )
+                        })}
+                        {system_data["races"].map((race, i) => {
+                            return (
+                                <div key={i} onClick={(e) => onRaceClick(e, i, race)}>{race["name"]} ({race["source"]})</div>
+                            );
+                        })}
+                    </div>
+                );
+            } else {
+                return (
+                    <div>
+                        {system_data["races"].map((race, i) => {
+                            return (
+                                <div key={i} onClick={(e) => onRaceClick(e, i, race)}>{race["name"]} ({race["source"]})</div>
+                            );
+                        })}
+                    </div>
+                );
+            }
         }
     }
 
@@ -144,20 +175,20 @@ export default function Create() {
         }
         
         return (
-        <div>
-            <h2>Point Buy</h2>
-            <p>Total Points Remaining: {27 - calculateTotalPoints()}</p>
-            <ul>
-                {Object.entries(ability_scores).map(([ability, score]) => (
-                    <li key={ability} class="ability-score-list">
-                        <span>{ability}: {score}{' '}</span>
-                        <button onClick={() => handleIncrease(ability)}>+</button>
-                        <button onClick={() => handleDecrease(ability)}>-</button>
-                    </li>
-                ))} 
-            </ul>
-            <button onClick={() => handleASReset()}>Reset Ablity Scores</button>
-        </div>
+            <div>
+                <h2>Point Buy</h2>
+                <p>Total Points Remaining: {27 - calculateTotalPoints()}</p>
+                <ul>
+                    {Object.entries(ability_scores).map(([ability, score]) => (
+                        <li key={ability} class="ability-score-list">
+                            <button onClick={() => handleIncrease(ability)}>+</button>
+                            <button onClick={() => handleDecrease(ability)}>-</button>
+                            <span> {ability}: {score}{' '}</span>
+                        </li>
+                    ))} 
+                </ul>
+                <button onClick={() => handleASReset()}>Reset Ablity Scores</button>
+            </div>
         );
     }
 
