@@ -61,7 +61,7 @@
 				{
 					"name": "Menacing",
 					"entries": [
-						"You gain proficiency in the {@skill Intimidation} skill."
+						"You gain proficiency in the Intimidation skill."
 					],
 					"type": "entries"
 				},
@@ -139,7 +139,7 @@
 				{
 					"name": "Brave",
 					"entries": [
-						"You have advantage on saving throws against being {@condition frightened}."
+						"You have advantage on saving throws against being frightened."
 					],
 					"type": "entries"
 				},

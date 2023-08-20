@@ -225,6 +225,10 @@
 
 /* Panel */
 
+.create-race {
+    position: absolute;
+}
+
 .sheet-panel {
     outline: 3px black solid;
     position: absolute;
@@ -236,4 +240,28 @@
 
 .ability-score-list {
     list-style-type: none;
+}
+
+/* Creation */
+
+/* Race */
+.create-race {
+    display: flex;
+}
+
+.race-list {
+    flex: 1;
+    margin-left: 20px;
+    margin-top: 20px;
+    max-width: 150px;
+}
+
+.race-entry {
+    max-width: 500px;
+}
+
+.race-entries {
+    flex: 1;
+    margin-left: 20px;
+    margin-top: 20px;
 }

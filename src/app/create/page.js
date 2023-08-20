@@ -65,31 +65,46 @@ export default function Create() {
         if (system_data) {
             if (selected_race) {
                 return (
-                    <div>
-                        {<h1>Selected race: {selected_race["race"]["name"]}</h1>}
-                        {selected_race["race"]["entries"].map((entry) => {
-                            return (
-                                <>
-                                    <h1>{entry.name}</h1>
-                                    <p>{entry.entries[0]}</p>
-                                </>  
-                            )
-                        })}
-                        {system_data["races"].map((race, i) => {
-                            return (
-                                <div key={i} onClick={(e) => onRaceClick(e, i, race)}>{race["name"]} ({race["source"]})</div>
-                            );
-                        })}
+                    <div className="create-race">
+                        <div className="race-list">
+                            {system_data["races"].map((race, i) => {
+                                if (selected_race["race"]["name"] === race["name"]) {
+                                    return (
+                                        <b><div key={i} className="race-name" onClick={(e) => onRaceClick(e, i, race)}>{race["name"]} ({race["source"]})</div></b>
+                                    );
+                                } else {
+                                    return (
+                                        <div key={i} className="race-name" onClick={(e) => onRaceClick(e, i, race)}>{race["name"]} ({race["source"]})</div>
+                                    );
+                                }
+                                
+                            })}
+                        </div>
+                        <div className="race-entries">
+                            {selected_race["race"]["entries"].map((entry) => {
+                                return (
+                                    <div className="race-entry">
+                                        <h1>{entry.name}</h1>
+                                        <p>{entry.entries[0]}</p>
+                                    </div>  
+                                )
+                            })}
+                        </div>
                     </div>
                 );
             } else {
                 return (
-                    <div>
-                        {system_data["races"].map((race, i) => {
-                            return (
-                                <div key={i} onClick={(e) => onRaceClick(e, i, race)}>{race["name"]} ({race["source"]})</div>
-                            );
-                        })}
+                    <div className="create-race">
+                        <div className="race-list">
+                            {system_data["races"].map((race, i) => {
+
+                                return (
+                                    <div key={i} className="race-name" onClick={(e) => onRaceClick(e, i, race)}>{race["name"]} ({race["source"]})</div>
+                                );
+                                
+                                
+                            })}
+                        </div>
                     </div>
                 );
             }
