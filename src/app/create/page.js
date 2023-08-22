@@ -8,12 +8,12 @@ export default function Create() {
     const [name, setName] = useState("");
     const [system_data, setSystemData] = useState();
     const [ability_scores, setAbilityScores] = useState({
-        Strength: 8,
-        Dexterity: 8,
-        Constitution: 8,
-        Intelligence: 8,
-        Wisdom: 8,
-        Charisma: 8,
+        Strength: undefined,
+        Dexterity: undefined,
+        Constitution: undefined,
+        Intelligence: undefined,
+        Wisdom: undefined,
+        Charisma: undefined,
     });
     const [selected_race, setSelectedRace] = useState();
     const [selected_class, setSelectedClass] = useState();
@@ -36,6 +36,25 @@ export default function Create() {
 
         function handleAbilityScoreTypeChange(event) {
             setASType(event.target.value);
+            if (event.target.value === "point-buy") {
+                setAbilityScores({
+                    Strength: 8,
+                    Dexterity: 8,
+                    Constitution: 8,
+                    Intelligence: 8,
+                    Wisdom: 8,
+                    Charisma: 8,
+                });
+            } else {
+                setAbilityScores({
+                    Strength: undefined,
+                    Dexterity: undefined,
+                    Constitution: undefined,
+                    Intelligence: undefined,
+                    Wisdom: undefined,
+                    Charisma: undefined,
+                });
+            }
         }
         
         return (
@@ -46,7 +65,7 @@ export default function Create() {
                 <span>Customize Racial Ability Score Increases</span>
                 <input type="checkbox" checked={custom_as_increase} onClick={() => handleCustomRacialIncreaseClick()}></input>
                 <br></br>
-                <select onChange={(e) => handleAbilityScoreTypeChange(e)}>
+                <select value={as_type} onChange={(e) => handleAbilityScoreTypeChange(e)}>
                     <option value="standard-array">Standard Array</option>
                     <option value="point-buy">Point Buy</option>
                     <option value="custom">Custom</option>
@@ -228,32 +247,87 @@ export default function Create() {
         };
 
         function handleASReset() {
-            setAbilityScores({
-                Strength: 8,
-                Dexterity: 8,
-                Constitution: 8,
-                Intelligence: 8,
-                Wisdom: 8,
-                Charisma: 8
-            });
+            if (as_type === "point-buy") {
+                setAbilityScores({
+                    Strength: 8,
+                    Dexterity: 8,
+                    Constitution: 8,
+                    Intelligence: 8,
+                    Wisdom: 8,
+                    Charisma: 8
+                });
+            } else {
+                setAbilityScores({
+                    Strength: undefined,
+                    Dexterity: undefined,
+                    Constitution: undefined,
+                    Intelligence: undefined,
+                    Wisdom: undefined,
+                    Charisma: undefined
+                });
+            }
         }
-        
-        return (
-            <div>
-                <h2>Point Buy</h2>
-                <p>Total Points Remaining: {27 - calculateTotalPoints()}</p>
-                <ul>
-                    {Object.entries(ability_scores).map(([ability, score]) => (
-                        <li key={ability} class="ability-score-list">
-                            <button onClick={() => handleIncrease(ability)}>+</button>
-                            <button onClick={() => handleDecrease(ability)}>-</button>
-                            <span> {ability}: {score}{' '}</span>
-                        </li>
-                    ))} 
-                </ul>
-                <button onClick={() => handleASReset()}>Reset Ablity Scores</button>
-            </div>
-        );
+
+        if (as_type === "point-buy") {
+            return (
+                <div>
+                    <h2>Point Buy</h2>
+                    <p>Total Points Remaining: {27 - calculateTotalPoints()}</p>
+                    <ul>
+                        {Object.entries(ability_scores).map(([ability, score]) => (
+                            <li key={ability} className="ability-score-list">
+                                <button onClick={() => handleIncrease(ability)}>+</button>
+                                <button onClick={() => handleDecrease(ability)}>-</button>
+                                <span> {ability}: {score}</span>
+                            </li>
+                        ))} 
+                    </ul>
+                    <button onClick={() => handleASReset()}>Reset Ablity Scores</button>
+                </div>
+            );
+        } else if (as_type === "standard-array") {
+            function handleStandardyArrayChange(event, ability) {
+                console.log(`Changing ${ability} to ${event.target.value}!`)
+                const temp_as = ability_scores;
+                if (event.target.value === "--") {
+                    temp_as[ability] = undefined;
+                } else {
+                    temp_as[ability] = event.target.value;
+                }
+                setAbilityScores(temp_as);
+            }
+            // Checks if ability score is already used
+            function checkAbilityScore(score) {
+                for (const key in ability_scores) {
+                    console.log(ability_scores[key])
+                    if (ability_scores[key] === score) {
+                        console.log("Score already used!")
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            return (
+                <div>
+                    <h2>Standard Array</h2>
+                    <ul>
+                        {Object.keys(ability_scores).map(ability => (
+                            <li key={ability} className="ability-score-list">
+                                <span> {ability}: </span>
+                                <select value={ability_scores[ability]} onChange={(e) => handleStandardyArrayChange(e, ability)}>
+                                    <option>--</option>
+                                    {checkAbilityScore(15) && <option value={15}>15</option>}
+                                </select>
+                            </li>
+                        ))} 
+                    </ul>
+                    <button onClick={() => handleASReset()}>Reset Ablity Scores</button>
+                </div>
+            );
+        } else {
+            return <div>Custom Ability Scores!</div>
+        }
     }
 
     function EquipmentContent() {
