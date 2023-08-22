@@ -59,56 +59,54 @@ export default function Create() {
 
         function onRaceClick(event, i, race) {
             setSelectedRace({index: i, race: race});
-
         }
 
-        if (system_data) {
-            if (selected_race) {
-                return (
-                    <div className="create-race">
-                        <div className="race-list">
-                            {system_data["races"].map((race, i) => {
-                                if (selected_race["race"]["name"] === race["name"]) {
-                                    return (
-                                        <b><div key={i} className="race-name" onClick={(e) => onRaceClick(e, i, race)}>{race["name"]} ({race["source"]})</div></b>
-                                    );
-                                } else {
-                                    return (
-                                        <div key={i} className="race-name" onClick={(e) => onRaceClick(e, i, race)}>{race["name"]} ({race["source"]})</div>
-                                    );
-                                }
-                                
-                            })}
-                        </div>
-                        <div className="race-entries">
-                            {selected_race["race"]["entries"].map((entry) => {
-                                return (
-                                    <div className="race-entry">
-                                        <h1>{entry.name}</h1>
-                                        <p>{entry.entries[0]}</p>
-                                    </div>  
-                                )
-                            })}
-                        </div>
-                    </div>
-                );
-            } else {
-                return (
-                    <div className="create-race">
-                        <div className="race-list">
-                            {system_data["races"].map((race, i) => {
+        if (!system_data) {
+            return;
+        }
 
+        if (selected_race) {
+            return (
+                <div className="create-race">
+                    <div className="race-list">
+                        {system_data["races"].map((race, i) => {
+                            if (selected_race["race"]["name"] === race["name"]) {
+                                return (
+                                    <b><div key={i} className="race-name" onClick={(e) => onRaceClick(e, i, race)}>{race["name"]} ({race["source"]})</div></b>
+                                );
+                            } else {
                                 return (
                                     <div key={i} className="race-name" onClick={(e) => onRaceClick(e, i, race)}>{race["name"]} ({race["source"]})</div>
                                 );
-                                
-                                
-                            })}
-                        </div>
+                            }
+                            
+                        })}
                     </div>
-                );
-            }
+                    <div className="race-entries">
+                        {selected_race["race"]["entries"].map((entry) => {
+                            return (
+                                <div className="race-entry">
+                                    <h1>{entry.name}</h1>
+                                    <p>{entry.entries[0]}</p>
+                                </div>  
+                            )
+                        })}
+                    </div>
+                </div>
+            );
         }
+
+        return (
+            <div className="create-race">
+                <div className="race-list">
+                    {system_data["races"].map((race, i) => {
+                        return (
+                            <div key={i} className="race-name" onClick={(e) => onRaceClick(e, i, race)}>{race["name"]} ({race["source"]})</div>
+                        );
+                    })}
+                </div>
+            </div>
+        );
     }
 
     function ClassContent() {
@@ -127,18 +125,69 @@ export default function Create() {
     }
 
     function BackgroundContent() {
-        if (system_data) {
+        function onBackgroundClick(event, i, bg) {
+            setSelectedBackground({index: i, background: bg});
+        }
+
+        if (!system_data) {
+            return;
+        }
+
+        if (selected_background) {
             return (
-                <div>
-                    {selected_background && <h1>Selected background: {selected_background["background"]["name"]}</h1>}
-                    {system_data["backgrounds"].map((bg, i) => {
-                        return (
-                            <div key={i} onClick={(event) => setSelectedBackground({index: i, background: bg})}>{bg["name"]} ({bg["source"]})</div>
-                        );
-                    })}
+                <div className="create-background">
+                    <div className="background-list">
+                        {system_data["backgrounds"].map((bg, i) => {
+                            if (selected_background["background"]["name"] === bg["name"]) {
+                                return (
+                                    <b><div key={i} className="background-name" onClick={(e) => onBackgroundClick(e, i, bg)}>{bg["name"]} ({bg["source"]})</div></b>
+                                );
+                            } else {
+                                return (
+                                    <div key={i} className="background-name" onClick={(e) => onBackgroundClick(e, i, bg)}>{bg["name"]} ({bg["source"]})</div>
+                                );
+                            }
+                            
+                        })}
+                    </div>
+                    <div className="background-entries">
+                        {selected_background["background"]["entries"].map((entry) => {
+                            if (entry["type"] === "entries") {
+                                return (
+                                    <div className="background-entry">
+                                        <h1>{entry.name}</h1>
+                                        <p>{entry.entries[0]}</p>
+                                    </div>  
+                                );
+                            } else if (entry["type"] === "list")
+                            return (
+                                entry["items"].map(item => {
+                                    return (
+                                        <div className="background-entry">
+                                            <b>{item.name}</b>
+                                            <div>{item.entry}</div>
+                                        </div>
+                                    );
+                                })
+                            );
+                        })}
+                    </div>
                 </div>
             );
         }
+
+        return (
+            <div className="create-background">
+                <div className="background-list">
+                    {system_data["backgrounds"].map((bg, i) => {
+                        return (
+                            <div key={i} className="background-name" onClick={(e) => onBackgroundClick(e, i, bg)}>{bg["name"]} ({bg["source"]})</div>
+                        );
+                    })}
+                </div>
+            </div>
+
+        );
     }
 
     function ASContent() {

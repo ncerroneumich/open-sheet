@@ -265,3 +265,25 @@
     margin-left: 20px;
     margin-top: 20px;
 }
+
+/* Background */
+.create-background {
+    display: flex;
+}
+
+.background-list {
+    flex: 1;
+    margin-left: 20px;
+    margin-top: 20px;
+    max-width: 150px;
+}
+
+.background-entry {
+    max-width: 500px;
+}
+
+.background-entries {
+    flex: 1;
+    margin-left: 20px;
+    margin-top: 20px;
+}

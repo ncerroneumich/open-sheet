@@ -20,16 +20,16 @@ function data_importer() {
         races.push(race);
     });
     // Backgrounds 
-    // const backgrounds = [];
-    // const backgrounds_buffer = fs.readFileSync(data_path + "backgrounds.json");
-    // const backgrounds_content = JSON.parse(backgrounds_buffer.toString('utf-8'));
-    // backgrounds_content["background"].forEach(bg => {
-    //     backgrounds.push(bg);
-    // });
+    const backgrounds = [];
+    const backgrounds_buffer = fs.readFileSync(data_path + "backgrounds.json");
+    const backgrounds_content = JSON.parse(backgrounds_buffer.toString('utf-8'));
+    backgrounds_content["backgrounds"].forEach(bg => {
+        backgrounds.push(bg);
+    });
     return {
         "classes": [],
         "races": races,
-        "backgrounds": []
+        "backgrounds": backgrounds
     };
 }
 
